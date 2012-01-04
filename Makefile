@@ -48,5 +48,7 @@ CCFILES		:= \
 
 ################################################################################
 # Rules and targets
+LIB += -lcrypt
 
 include ../../common/common.mk
+

@@ -8,11 +8,14 @@
  * is strictly prohibited.
  *
  */
+#include <stdio.h>
+
+typedef unsigned int         uint;
 
 ////////////////////////////////////////////////////////////////////////////////
 // export C interface
 extern "C" 
-void computeGold( float* reference, float* idata, const unsigned int len);
+void computeGold( uint* reference, uint* idata, const unsigned int len);
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Compute reference data set
@@ -22,12 +25,13 @@ void computeGold( float* reference, float* idata, const unsigned int len);
 //! @param len        number of elements in reference / idata
 ////////////////////////////////////////////////////////////////////////////////
 void
-computeGold( float* reference, float* idata, const unsigned int len) 
+computeGold( uint* reference, uint* idata, const unsigned int len) 
 {
-    const float f_len = static_cast<float>( len);
+//    const uint f_len = static_cast<uint>( len);
     for( unsigned int i = 0; i < len; ++i) 
     {
-        reference[i] = idata[i] * f_len;
+//        reference[i] = idata[i] * f_len;
+        reference[i] = idata[i] * idata[i];
     }
 }
 

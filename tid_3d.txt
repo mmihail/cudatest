@@ -1,0 +1,47 @@
+block keywords
+===================
+threadIdx.{x,y,z}
+defines thread index inside a block
+
+blockDim.{x,y,z}
+defines block dimensions
+===================
+
+
+grid keywords
+===================
+blockIdx.{x,y}
+defines block index inside the grid
+
+gridDim.{x,y}
+defines grid dimensions
+===================
+
+
+example for 2D grid(x,y,1) and 3d blocks(x,y,z)
+!!! Obshaya formula !!!!
+mozhno usat i na vseh menshih razmernostyah 
+
+tidx=threadIdx.x + blockIdx.x * blockDim.x;
+tidy=threadIdx.y + blockIdx.y * blockDim.y;
+tidz=threadIdx.z + blockIdx.z * blockDim.z;
+
+tid = tidx + tidy * gridDim.x * blockDim.x + tidz * gridDim.x * blockDim.x * gridDim.y * blockDim.y
+
+=================
+PS 
+
+grid(x) 1d
+blocks(x) 1d
+
+tid = blockIdx.x * blockDim.x + threadIdx.x;
+   
+dim3 threads = dim3(512, 1);
+dim3 blocks  = dim3(n / threads.x, 1);
+
+================i
+
+grid(x) 1d 
+blocks(x,y) 2d
+
+tid=(blockIdx.y * gridDim.x + blockIdx.x) * blockDim.x + threadIdx.x
